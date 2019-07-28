@@ -1,0 +1,59 @@
+﻿@model Valtech_Form_BusinessLogic.Models.FormModel
+<div class="mod-form-view">
+    <h2>Nieuwe entry aanmaken</h2>
+
+    @if(TempData["ErrorMessage"] != null && !string.IsNullOrEmpty(TempData["ErrorMessage"].ToString()))
+    {
+        <span class="text-danger">@TempData["ErrorMessage"]</span>
+    }
+
+    @using (Html.BeginForm("Submit", "Form", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName)
+            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control"})
+            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Surname) *
+            @Html.TextBoxFor(model => model.Surname, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email) *
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address)
+            @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ZipCode)
+            @Html.TextBoxFor(model => model.ZipCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ZipCode, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneNumber)
+            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AgreedToTermsAndConditions) *
+            @Html.CheckBoxFor(model => model.AgreedToTermsAndConditions, new { @class = "form-check-input" })
+            <br />
+            @Html.ValidationMessageFor(model => model.AgreedToTermsAndConditions, "", new { @class = "text-danger" })
+        </div>
+
+        @Html.AntiForgeryToken()
+
+        <input type="submit" class="btn btn-primary" value="Verzenden" title="Verzenden" alt="Verzend het formulier" />
+    }
+</div>

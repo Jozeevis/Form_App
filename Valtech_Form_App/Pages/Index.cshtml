@@ -1,0 +1,15 @@
+﻿@using Valtech_Form_BusinessLogic.Models
+@model IndexModel
+@{
+    if (ViewData != null)
+    {
+        ViewData["Title"] = "Home";
+    }
+}
+
+@if (TempData["Message"] != null && !string.IsNullOrEmpty(TempData["Message"].ToString())) {
+    <span class="text-success">@TempData["Message"]</span>
+}
+
+@await Html.PartialAsync("/Pages/Modules/FormView.cshtml", new FormModel())
+@await Html.PartialAsync("/Pages/Modules/EntriesView.cshtml", Model.FormEntries)

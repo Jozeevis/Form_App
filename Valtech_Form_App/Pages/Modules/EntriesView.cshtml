@@ -1,0 +1,42 @@
+﻿@model IEnumerable<FormModel>
+@using Valtech_Form_BusinessLogic.Models
+
+<div class="mod-entries-view">
+    <h2>Formulier entries (@Model.Count()/10)</h2>
+
+    @foreach (FormModel formEntry in Model)
+    {
+        <div>
+            <h3>Entry (Id @formEntry.Id) - @Html.ActionLink("Delete", "Delete", new { id = formEntry.Id})</h3>
+            <table>
+                <tr>
+                    <th>@Html.LabelFor(model => model.FirstOrDefault().FirstName)</th>
+                    <td>@(Html.Raw(string.IsNullOrEmpty(formEntry.FirstName) ? "<em>Niet ingevuld</em>" : formEntry.FirstName))</td>
+                <tr>
+                    <th>@Html.LabelFor(model => model.FirstOrDefault().Surname)</th>
+                    <td>@(Html.Raw(string.IsNullOrEmpty(formEntry.Surname) ? "<em>Niet ingevuld</em>" : formEntry.Surname))</td>
+                </tr>
+                <tr>
+                    <th>@Html.LabelFor(model => model.FirstOrDefault().Email)</th>
+                    <td>@(Html.Raw(string.IsNullOrEmpty(formEntry.Email) ? "<em>Niet ingevuld</em>" : formEntry.Email))</td>
+                </tr>
+                <tr>
+                    <th>@Html.LabelFor(model => model.FirstOrDefault().Address)</th>
+                    <td>@(Html.Raw(string.IsNullOrEmpty(formEntry.Address) ? "<em>Niet ingevuld</em>" : formEntry.Address))</td>
+                </tr>
+                <tr>
+                    <th>@Html.LabelFor(model => model.FirstOrDefault().ZipCode)</th>
+                    <td>@(Html.Raw(string.IsNullOrEmpty(formEntry.ZipCode) ? "<em>Niet ingevuld</em>" : formEntry.ZipCode))</td>
+                </tr>
+                <tr>
+                    <th>@Html.LabelFor(model => model.FirstOrDefault().PhoneNumber)</th>
+                    <td>@(Html.Raw(string.IsNullOrEmpty(formEntry.PhoneNumber) ? "<em>Niet ingevuld</em>" : formEntry.PhoneNumber))</td>
+                </tr>
+                <tr>
+                    <th>Akkoord met de algemene voorwaarden</th>
+                    <td>@(formEntry.AgreedToTermsAndConditions ? "Ja" : "Nee")</td>
+                </tr>
+            </table>
+        </div>
+    }
+</div>
